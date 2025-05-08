@@ -123,6 +123,12 @@ window.renderSheetView = function(selectedName) {
   // Restore state filter value if set
   if (sheetStateFilterValue) stateFilter.value = sheetStateFilterValue;
 
+  // Add this event listener to make the "All States" filter work:
+  stateFilter.addEventListener('change', e => {
+    sheetStateFilterValue = e.target.value;
+    renderTable();
+  });
+
   // Selection state
   let selectedRows = new Set();
   let isDragging = false;
