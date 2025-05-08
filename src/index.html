@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>My People Map</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet"/>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
+  <script src="https://unpkg.com/supercluster@7.1.4/dist/supercluster.min.js"></script>
+  <script src="app.js" defer></script>
+  <script src="sheet-view.js" defer></script>
+</head>
+<body>
+  <div id="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">My People</div>
+        <div class="sort-container">
+          <span class="sort-label">Sort by:</span>
+          <select id="sort-select">
+            <option value="first">First Name</option>
+            <option value="last">Last Name</option>
+            <option value="state" selected>State</option>
+          </select>
+        </div>
+        <div class="toolbar">
+          <input id="search" list="search-suggestions" type="text" placeholder="Search name, city, state, zip…" autocomplete="off"/>
+          <datalist id="search-suggestions"></datalist>
+          <button id="show-all" aria-label="Show All Contacts">Show All</button>
+        </div>
+      </div>
+      <div class="directory-content">
+        <div id="directory-count"></div>
+        <div id="active-contact-card"></div>
+        <ul id="contact-list"></ul>
+      </div>
+    </aside>
+    <div id="map"></div>
+    <div id="sheet-view" style="display: none;"></div>
+    <button id="recenter-btn" title="Recenter Map" style="display:none;">
+      <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
+    </button>
+    <div id="spinner"><div class="spinner"></div></div>
+  </div>
+</body>
+</html>
